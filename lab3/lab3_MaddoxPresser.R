@@ -65,14 +65,13 @@ p_B0_given_A1 = precip_prob_table["1", "0"] / sum(precip_prob_table["1", ]) # P(
 p_B1_given_A0 = precip_prob_table["0", "1"] / sum(precip_prob_table["0", ]) # P(B=1 | A=0)
 p_B0_given_A0 = precip_prob_table["0", "0"] / sum(precip_prob_table["0", ]) # P(B=0 | A=0)
 
-cond_prob_precip_table = data.frame(
+cond_prob_table = data.frame(
   Station_A = c(1, 1, 0, 0),
   Station_B = c(1, 0, 1, 0),
   Conditional_Probability = c(p_B1_given_A1, p_B0_given_A1, p_B1_given_A0, p_B0_given_A0)
 )
-cond_prob_precip_table
+cond_prob_table
 
-precip_prob_table
 
 prob_Aeq0 = sum(precip_prob_table["0", ]) # probability x=0
 prob_Aeq1 = sum(precip_prob_table["1", ]) # probability x=1
