@@ -49,7 +49,7 @@ cond_prob_table = data.frame(
 )
 cond_prob_table
 
-# 4 a) 
+# 4 a) Precipitation data
 
 data = read.csv("lab3/precip2.csv")
 occur = (data > 0)
@@ -58,6 +58,8 @@ occ = occur + 0 # this trick will turn the matrix into a numeric one
 head(occ)
 
 precip_table = table(occ[,1], occ[,2])
+precip_table
+
 precip_prob_table = precip_table / sum(precip_table)
 precip_prob_table
 p_B1_given_A1 = precip_prob_table["1", "1"] / sum(precip_prob_table["1", ]) # P(B=1 | A=1)

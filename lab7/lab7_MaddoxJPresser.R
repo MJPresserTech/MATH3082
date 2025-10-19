@@ -41,4 +41,47 @@ table <- data.frame(
 
 print(table)
 
+# Q2 a) Q-Q plots
 
+data <- read.csv("lab7/Dist-exam.txt")
+
+data$C1 <- as.numeric(data$C1) # Make column numeric
+par(mfrow = c(1, 2))
+
+hist(data$C1,
+     main = "Histogram of Exam Scores",
+     xlab = "Score",
+     col = "lightblue",
+     border = "black")
+
+qqnorm(data$C1, main = "Q-Q Plot: Exam Scores vs Normal Distribution")
+qqline(data$C1, col = "red")
+
+# Q3 a) 
+
+n <- 1000 # sample size
+
+x_uniform <- runif(n, min = -1, max = 1) # Uniform(-1,1)
+x_t3 <- rt(n, df = 3) # t-distribution with 3 degrees of freedom
+
+par(mfrow = c(1, 2))
+
+qqnorm(x_uniform, main = "Normal Q-Q: Uniform(-1,1) (light tails)")
+qqline(x_uniform, col = "red")
+
+qqnorm(x_t3, main = "Normal Q-Q: t(3) (heavy tails)")
+qqline(x_t3, col = "red")
+
+# Q3 b)
+
+data <- read.csv("lab7/DowJones.txt")
+
+par(mfrow = c(1, 2))  
+hist(data$x,
+     main = "Histogram of Dow Jones Returns",
+     xlab = "Return (%)",
+     col = "lightblue",
+     border = "black")
+
+qqnorm(data$x, main = "Normal Q-Q Plot of Dow Jones Returns")
+qqline(data$x, col = "red")
