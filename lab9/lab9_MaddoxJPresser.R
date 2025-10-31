@@ -1,4 +1,4 @@
-# a)
+# q1 a)
 set.seed(69420)
 uni1 = runif(50, 0, 1)
 uni2 = runif(50, 0, 1)
@@ -27,6 +27,30 @@ hist(s, main="Histogram of s", xlab="Value", col="lightblue", border="black")
 s_mean = mean(s)
 cat("Mean of s:", s_mean, "\n")
 
+# q2 a)
+
 socorro = read.csv("lab9/SocorroPrec.csv")
+x = socorro[,1]
+bhat = mean(x)
 par(mfrow=c(1,1))
-hist(socorro$x, main="Histogram of Socorro Precipitation", xlab="Precipitation", col="lightgreen", border="black")
+hist(x, breaks=seq(0,3.5,by=0.1), freq=F)
+xc = seq(0,3.5,by=0.02)
+yc = dexp(xc, 1/bhat)
+# recall that 1/beta is the default parameter in R
+lines(xc, yc, lwd=2, col="red")
+
+# b)
+xbar = mean(x)
+s2 = var(x)
+
+beta_hat = s2 / xbar
+alpha_hat = xbar^2 / s2
+
+lines(xc, dgamma(xc, shape=alpha_hat, scale=beta_hat),
+      lwd=2, col="blue")
+legend("topright",
+       legend = c("Exponential", "Gamma"),
+       col = c("red", "blue"),
+       lwd = 2)
+
+cat("alpha_hat =", alpha_hat, " beta_hat =", beta_hat, "\n")
