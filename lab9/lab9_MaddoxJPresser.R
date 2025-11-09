@@ -92,6 +92,7 @@ print(results)
 
 # q4 a)
 par(mfrow=c(1,1))
+set.seed(69420)
 
 beta <- 1
 n <- 10000
@@ -117,13 +118,13 @@ cat("Standard deviation of sample medians:", sd_meds, "\n")
 
 # q4 c) 
 
-mu <- beta * log(2)
-cat("Theoretical mean of the sample median:", mu, "\n")
+m <- beta * log(2)
+cat("Theoretical median of the sample median:", m, "\n")
 
 # q4 d)
 
-beta_hat1 <- meds[1] / mu
+beta_hat1 <- meds[1] / m
 cat("Beta hat from first sample median:", beta_hat1, "\n")
 
-sd_beta_hat <- sd_meds / mu
+sd_beta_hat <- sd_meds / m
 cat("Standard deviation of beta hat:", sd_beta_hat, "\n")
